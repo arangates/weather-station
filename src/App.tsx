@@ -9,6 +9,8 @@ import { AppStore } from './store/store';
 import { fetchWeather } from './store/fetchWeather';
 import usePosition from './hooks/usePosition';
 
+import './App.css'
+
 const App = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState<string | null>(null);
@@ -18,33 +20,31 @@ const App = () => {
     loading: state.app.isLoading,
   }));
 
+  const getOrRefreshData = React.useCallback((GeolocationPosition) => {
+    dispatch(
+      fetchWeather({
+        lat: GeolocationPosition?.coords.latitude,
+        lng: GeolocationPosition?.coords.longitude,
+      })
+    );
+  }, [dispatch]);
   useEffect(() => {
     if (!navigator || !navigator.geolocation) {
       setError('Geolocation is not supported');
       return;
     }
     if (GeolocationPosition) {
-      dispatch(
-        fetchWeather({
-          lat: GeolocationPosition?.coords.latitude,
-          lng: GeolocationPosition?.coords.longitude,
-        })
-      );
+      getOrRefreshData(GeolocationPosition)
     }
-  }, [GeolocationPosition, dispatch]);
+  }, [GeolocationPosition, getOrRefreshData]);
 
   return (
     <>
       {loading && <Spinner />}
       {error && <span>{error}</span>}
-      <div>
-        <>
-          <code>
-            latitude: {GeolocationPosition?.coords.latitude}<br />
-            longitude: {GeolocationPosition?.coords.longitude}<br />
-          </code>
-        </>
-      </div>
+      <button onClick={() => getOrRefreshData(GeolocationPosition)}>
+        Refresh
+      </button>
       <CurrentWeather />
       <Forecast />
     </>

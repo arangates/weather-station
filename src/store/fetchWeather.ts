@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ExtendedForecastData, WeatherData } from '../api/types';
-import { fetchExtendedForecastData, fetchWeatherData } from '../api/weather';
+import { fetchWeatherData } from '../api/weather';
 import { getNextSevenDays } from '../utils/dateUtils';
 import { setIsInitial, setIsLoading } from './reducers/appReducer';
 
@@ -14,8 +14,8 @@ export const fetchWeather = createAsyncThunk(
 
 		try {
 			const res = await Promise.all([
-				fetchWeatherData(coords),
-				fetchExtendedForecastData(coords),
+				fetchWeatherData(coords, 'weather'),
+				fetchWeatherData(coords, 'forecast/daily'),
 			]);
 			dispatch(setIsLoading(false));
 
@@ -26,7 +26,7 @@ export const fetchWeather = createAsyncThunk(
 			return rejectWithValue(res[0].message);
 		} catch {
 			dispatch(setIsLoading(false));
-			return rejectWithValue('Error');
+			return rejectWithValue('Error fetching data');
 		}
 	}
 );
@@ -41,7 +41,6 @@ export const transformWeatherData = (
 	const forecast: ExtendedForecastData[] = [];
 
 	weather.weather = res[0].weather[0];
-
 
 	const next7Days = getNextSevenDays();
 
