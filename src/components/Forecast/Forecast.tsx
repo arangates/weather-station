@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { AppStore } from '../../store/store';
 import ForecastItem from './ForecastItem';
 
-import './Forecast.module.css'
+import styles from './Forecast.module.css';
 
 const Forecast: React.FC = () => {
   const { forecast, isInitial } = useSelector((state: AppStore) => ({
@@ -15,10 +15,8 @@ const Forecast: React.FC = () => {
   if (isInitial) return <></>;
 
   return (
-    <div>
-      <h1>Extended Forecast</h1>
-      <div>
-        {forecast.map((item, i) => {
+    <div className={styles.forecastContainer}>
+      {forecast.map((item, i) => {
           return (
             <ForecastItem
               key={i}
@@ -28,8 +26,7 @@ const Forecast: React.FC = () => {
               icon={item.icon}
             />
           );
-        })}
-      </div>
+      })}
     </div>
   );
 };
