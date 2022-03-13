@@ -1,0 +1,8 @@
+{
+  "short_name": "Weather Station",
+  "name": "The Weather Station app",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4A90E2",
+  "background_color": "#ffffff"
+}
