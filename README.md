@@ -33,16 +33,19 @@ cd weather-station
 npm install
 npm start
 ```
+
 ## Desktop
+
 <img src="./designs/Desktop.png" width="400">
 
 ## Tablet
+
 <img src="./designs/Tablet Portrait.png" width="400">
 
 ## Mobile
+
 <img src="./designs/Mobile Portrait.png" width="400">
 
 ## Credits
 
-[OpenWeatherMap](https://openweathermap.org/ 'OpenWeatherMap') (Weather data API)
-
+[OpenWeatherMap](https://openweathermap.org/ "OpenWeatherMap") (Weather data API)

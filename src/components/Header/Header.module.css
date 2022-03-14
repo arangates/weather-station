@@ -1,13 +1,13 @@
 .app_header {
-	display: flex;
-	padding: 1rem;
-	justify-content: flex-end;
-	align-items: center;
-	flex-direction: row;
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
 }
 
 .refresh_icon {
-	height: 1.5rem;
-	width: 1.5rem;
-	margin-right: 0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
 }

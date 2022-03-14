@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "components/Header";
-import CurrentWeather from 'components/CurrentWeather';
-import Forecast from 'components/Forecast';
-import Spinner from 'components/Spinner';
-import Error from 'components/Error';
-import { AppStore } from 'store/store';
-import { fetchWeather } from 'store/fetchWeather';
-import usePosition from 'hooks/usePosition';
+import CurrentWeather from "components/CurrentWeather";
+import Forecast from "components/Forecast";
+import Spinner from "components/Spinner";
+import Error from "components/Error";
+import { AppStore } from "store/store";
+import { fetchWeather } from "store/fetchWeather";
+import usePosition from "hooks/usePosition";
 
-import 'App.css'
+import "App.css";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,21 +22,24 @@ const App = () => {
     isError: state.weather.isError,
   }));
 
-  const getOrRefreshData = React.useCallback((GeolocationPosition) => {
-    dispatch(
-      fetchWeather({
-        lat: GeolocationPosition?.coords.latitude,
-        lng: GeolocationPosition?.coords.longitude,
-      })
-    );
-  }, [dispatch]);
+  const getOrRefreshData = React.useCallback(
+    (GeolocationPosition) => {
+      dispatch(
+        fetchWeather({
+          lat: GeolocationPosition?.coords.latitude,
+          lng: GeolocationPosition?.coords.longitude,
+        })
+      );
+    },
+    [dispatch]
+  );
   useEffect(() => {
     if (!navigator || !navigator.geolocation) {
-      setError('Geolocation is not supported');
+      setError("Geolocation is not supported");
       return;
     }
     if (GeolocationPosition) {
-      getOrRefreshData(GeolocationPosition)
+      getOrRefreshData(GeolocationPosition);
     }
   }, [GeolocationPosition, getOrRefreshData]);
 
@@ -44,14 +47,16 @@ const App = () => {
     <>
       {loading && <Spinner />}
       <Header onRefresh={() => getOrRefreshData(GeolocationPosition)} />
-      {isError ? <Error reason={error} /> : <div className='container'>
-        <CurrentWeather />
-        <Forecast />
-      </div>}
-
+      {isError ? (
+        <Error reason={error} />
+      ) : (
+        <div className="container">
+          <CurrentWeather />
+          <Forecast />
+        </div>
+      )}
     </>
   );
 };
 
 export default App;
-

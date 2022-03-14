@@ -1,23 +1,23 @@
 .forecastContainer {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
 
 .forecastItem {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 20rem;
-	line-height: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20rem;
+  line-height: 3;
 }
 
 .day {
-	width: 6rem;
+  width: 6rem;
 }
 
 .maxTemp {
-	color: #f8e71c;
-	margin-left: 2rem;
+  color: #f8e71c;
+  margin-left: 2rem;
 }

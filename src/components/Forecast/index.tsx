@@ -1,9 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { AppStore } from '../../store/store';
-import ForecastItem from './ForecastItem';
+import React from "react";
+import { useSelector } from "react-redux";
+import { AppStore } from "../../store/store";
+import ForecastItem from "./ForecastItem";
 
-import styles from './Forecast.module.css';
+import styles from "./Forecast.module.css";
 
 const Forecast: React.FC = () => {
   const { forecast, isInitial } = useSelector((state: AppStore) => ({

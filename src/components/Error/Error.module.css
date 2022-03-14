@@ -1,13 +1,13 @@
 .error_container {
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	flex-direction: column;
-	text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
   font-weight: 500;
   padding: 4rem;
 }
 
 .emotion {
-	font-size: 10rem;
+  font-size: 10rem;
 }

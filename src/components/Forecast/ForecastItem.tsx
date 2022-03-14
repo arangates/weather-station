@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Forecast.module.css';
+import styles from "./Forecast.module.css";
 
 interface IForecastItemProps {
   day: string;
@@ -8,7 +8,12 @@ interface IForecastItemProps {
   low: number;
   icon: string;
 }
-const ForecastItem: React.FC<IForecastItemProps> = ({ day, icon, high, low }) => {
+const ForecastItem: React.FC<IForecastItemProps> = ({
+  day,
+  icon,
+  high,
+  low,
+}) => {
   return (
     <div className={styles.forecastItem}>
       <span className={styles.day}>{day}</span>

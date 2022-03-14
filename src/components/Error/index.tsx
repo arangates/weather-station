@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './Error.module.css'
+import React from "react";
+import styles from "./Error.module.css";
 
 interface IErrorItemProps {
   reason: string | null;
@@ -12,7 +12,7 @@ const Error: React.FC<IErrorItemProps> = ({ reason }) => {
       <strong> {reason ? reason : "not connected to the interwebs."} </strong>
       <p>try again after establishing network connection</p>
     </div>
-  )
-}
+  );
+};
 
-export default Error
+export default Error;

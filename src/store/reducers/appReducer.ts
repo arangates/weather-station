@@ -1,26 +1,26 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IAppState {
-	isLoading: boolean;
-	isInitial: boolean;
+  isLoading: boolean;
+  isInitial: boolean;
 }
 
 const initialState: IAppState = {
-	isLoading: false,
-	isInitial: true,
+  isLoading: false,
+  isInitial: true,
 };
 
 const appSlice = createSlice({
-	name: 'app',
-	initialState,
-	reducers: {
-		setIsLoading: (state: IAppState, action: PayloadAction<boolean>) => {
-			state.isLoading = action.payload;
-		},
-		setIsInitial: (state: IAppState, action: PayloadAction<boolean>) => {
-			state.isInitial = action.payload;
-		},
-	},
+  name: "app",
+  initialState,
+  reducers: {
+    setIsLoading: (state: IAppState, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
+    setIsInitial: (state: IAppState, action: PayloadAction<boolean>) => {
+      state.isInitial = action.payload;
+    },
+  },
 });
 
 export const { setIsLoading, setIsInitial } = appSlice.actions;
