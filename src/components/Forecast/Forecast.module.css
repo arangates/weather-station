@@ -21,3 +21,15 @@
   color: #f8e71c;
   margin-left: 2rem;
 }
+
+@media screen and (min-width: 800px) {
+  .forecastContainer {
+    background-color: white;
+    justify-content: center;
+    color: #4a90e2;
+    height: 100vh;
+  }
+  .maxTemp {
+    color: red;
+  }
+}

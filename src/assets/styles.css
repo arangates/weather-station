@@ -473,11 +473,6 @@ h6 {
 
 /* Layout
    ========================================================================== */
-.container {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 15px;
-}
 
 .list-inline,
 .list-inline li {
