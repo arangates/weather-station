@@ -17,8 +17,9 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
   const GeolocationPosition = usePosition();
 
-  const { loading, isError } = useSelector((state: AppStore) => ({
+  const { loading, isError, isInitial } = useSelector((state: AppStore) => ({
     loading: state.app.isLoading,
+    isInitial: state.app.isInitial,
     isError: state.weather.isError,
   }));
 
@@ -45,7 +46,7 @@ const App = () => {
 
   return (
     <>
-      {loading && <Spinner />}
+      {(loading || isInitial) && <Spinner />}
       <Header onRefresh={() => getOrRefreshData(GeolocationPosition)} />
       {isError ? (
         <Error reason={error} />
