@@ -16,16 +16,16 @@ const Forecast: React.FC = () => {
 
   return (
     <div className={styles.forecastContainer}>
-      {forecast.map((item, i) => {
-          return (
-            <ForecastItem
-              key={i}
-              day={item.day}
-              high={item.temp.temp_max}
-              low={item.temp.temp_min}
-              icon={item.icon}
-            />
-          );
+      {forecast.slice(0, 5).map((item, i) => {
+        return (
+          <ForecastItem
+            key={i}
+            day={item.day}
+            high={item.temp.temp_max}
+            low={item.temp.temp_min}
+            icon={item.icon}
+          />
+        );
       })}
     </div>
   );

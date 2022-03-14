@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ExtendedForecastData, WeatherData } from '../api/types';
-import { fetchWeatherData } from '../api/weather';
-import { getNextSevenDays } from '../utils/dateUtils';
+import { ExtendedForecastData, WeatherData } from 'api/types';
+import { fetchWeatherData } from 'api/weather';
+import { getNextSevenDays } from 'utils/dateUtils';
 import { setIsInitial, setIsLoading } from './reducers/appReducer';
 
 export const fetchWeather = createAsyncThunk(

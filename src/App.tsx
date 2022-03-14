@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Forecast from './components/Forecast/Forecast';
-import Spinner from './components/Spinner/Spinner';
-import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import Header from "components/Header";
+import CurrentWeather from 'components/CurrentWeather';
+import Forecast from 'components/Forecast';
+import Spinner from 'components/Spinner';
+import Error from 'components/Error';
+import { AppStore } from 'store/store';
+import { fetchWeather } from 'store/fetchWeather';
+import usePosition from 'hooks/usePosition';
 
-import { AppStore } from './store/store';
-import { fetchWeather } from './store/fetchWeather';
-import usePosition from './hooks/usePosition';
-
-import './App.css'
+import 'App.css'
 
 const App = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState<string | null>(null);
   const GeolocationPosition = usePosition();
 
-  const { loading } = useSelector((state: AppStore) => ({
+  const { loading, isError } = useSelector((state: AppStore) => ({
     loading: state.app.isLoading,
+    isError: state.weather.isError,
   }));
 
   const getOrRefreshData = React.useCallback((GeolocationPosition) => {
@@ -41,12 +43,12 @@ const App = () => {
   return (
     <>
       {loading && <Spinner />}
-      {error && <span>{error}</span>}
-      <button onClick={() => getOrRefreshData(GeolocationPosition)}>
-        Refresh
-      </button>
-      <CurrentWeather />
-      <Forecast />
+      <Header onRefresh={() => getOrRefreshData(GeolocationPosition)} />
+      {isError ? <Error reason={error} /> : <div className='container'>
+        <CurrentWeather />
+        <Forecast />
+      </div>}
+
     </>
   );
 };

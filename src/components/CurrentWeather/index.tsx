@@ -28,7 +28,7 @@ const CurrentWeather: React.FC = () => {
         {Math.round(currentWeather.main.temp)} &deg;C
       </strong>
       <small className='temp-range'>
-        min. {currentWeather.main.temp_min}°C / max. {currentWeather.main.temp_max}°C
+        min. {Math.round(currentWeather.main.temp_min)}°C / max. {Math.round(currentWeather.main.temp_max)}°C
       </small>
     </div>
   );

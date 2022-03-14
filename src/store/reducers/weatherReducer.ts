@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ExtendedForecastData, WeatherData } from '../../api/types';
+import { ExtendedForecastData, WeatherData } from 'api/types';
 import { fetchWeather, transformWeatherData } from '../fetchWeather';
 
 export type WeatherState = {
@@ -34,6 +34,7 @@ const weatherSlice = createSlice({
 				const res = transformWeatherData(action.payload);
 				state.weatherData = res.weather;
 				state.extendedWeatherData = res.forecast;
+        state.isError = false;
 			})
 			.addCase(fetchWeather.rejected, (state, action) => {
 				state.isError = true;
